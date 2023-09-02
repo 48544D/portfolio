@@ -1,36 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { images } from "../../constants";
+import { client, urlFor } from "../../client";
+import { AppWrap } from "../../wrapper";
 
 import "./about.scss";
 const About = () => {
-  const abouts = [
-    {
-      title: "Backend Developer",
-      description: "I am a backend developer",
-      imgUrl: images.about01,
-    },
-    {
-      title: "Frontend Developer",
-      description: "I am a frontend developer",
-      imgUrl: images.about02,
-    },
-    {
-      title: "Data Scientist",
-      description: "I am a data scientist",
-      imgUrl: images.about03,
-    },
-    {
-      title: "Laravel Developer",
-      description: "I am a laravel developer",
-      imgUrl: images.about04,
-    },
-  ];
+  const [abouts, setAbouts] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "abouts"]';
+
+    client.fetch(query).then((abouts) => setAbouts(abouts));
+  }, []);
 
   return (
     <>
       <h2 className="head-text">
-        I know that <span>Honest Work</span> <br /> means{" "}
+        I believe that <span>Honest Work</span> <br /> means{" "}
         <span>Good Business</span>
       </h2>
 
@@ -43,11 +30,11 @@ const About = () => {
             className="app__profile-item"
             key={about.title + index}
           >
-            <img src={about.imgUrl} alt={about.title} />
+            <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>
               {about.title}
             </h2>
-            <p className="bold-text" style={{ marginTop: 10 }}>
+            <p className="p-text" style={{ marginTop: 10 }}>
               {about.description}
             </p>
           </motion.div>
@@ -57,4 +44,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AppWrap(About, "about");
