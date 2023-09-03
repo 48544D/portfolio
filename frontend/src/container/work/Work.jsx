@@ -16,25 +16,10 @@ const Work = () => {
   const [tags, setTags] = useState([]);
   const [filterWorks, setFilterWorks] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(3);
-
-  useEffect(() => {
-    const query = '*[_type == "works"]';
-    client.fetch(query).then((works) => {
-      setWorks(works);
-      setFilterWorks(works);
-    });
-    client.fetch('*[_type == "works"]{tags}').then((tags) => {
-      // merge all tags and set all as the first item
-      const mergeTags = [].concat.apply(
-        [],
-        tags.map((tag) => tag.tags)
-      );
-      mergeTags.unshift("All");
-      // remove duplicate tags
-      const uniqueTags = [...new Set(mergeTags)];
-      setTags(uniqueTags);
-    });
-  }, []);
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = filterWorks.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(filterWorks.length / itemsPerPage);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % filterWorks.length;
@@ -77,13 +62,7 @@ const Work = () => {
       });
     });
   };
-
   liClick();
-
-  const [itemOffset, setItemOffset] = useState(0);
-  const endOffset = itemOffset + itemsPerPage;
-  const currentItems = filterWorks.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(filterWorks.length / itemsPerPage);
 
   // responsive items per page
   const handleResize = () => {
@@ -95,6 +74,28 @@ const Work = () => {
   };
 
   useEffect(() => {
+    // fetch works from sanity
+    const queryWorks = '*[_type == "works"]';
+    client.fetch(queryWorks).then((works) => {
+      setWorks(works);
+      setFilterWorks(works);
+    });
+
+    // fetch tags from sanity
+    const queryTags = '*[_type == "works"]{tags}';
+    client.fetch(queryTags).then((tags) => {
+      // merge all tags and set "all" as the first item
+      const mergeTags = [].concat.apply(
+        [],
+        tags.map((tag) => tag.tags)
+      );
+      mergeTags.unshift("All");
+      // remove duplicate tags
+      const uniqueTags = [...new Set(mergeTags)];
+      setTags(uniqueTags);
+    });
+
+    // responsive items per page
     handleResize();
     window.addEventListener("resize", handleResize);
   }, []);
