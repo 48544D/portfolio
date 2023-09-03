@@ -15,7 +15,7 @@ const Work = () => {
   const [works, setWorks] = useState([]);
   const [tags, setTags] = useState([]);
   const [filterWorks, setFilterWorks] = useState([]);
-  const itemsPerPage = 3;
+  const [itemsPerPage, setItemsPerPage] = useState(3);
 
   useEffect(() => {
     const query = '*[_type == "works"]';
@@ -84,6 +84,20 @@ const Work = () => {
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = filterWorks.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(filterWorks.length / itemsPerPage);
+
+  // responsive items per page
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setItemsPerPage(2);
+    } else {
+      setItemsPerPage(3);
+    }
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
