@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import { AppWrap } from "../../wrapper";
+import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import ReactPaginate from "react-paginate";
 
@@ -177,9 +177,6 @@ const Work = () => {
                   >
                     {item.title}
                   </h4>
-                  {/* <p className="p-text" style={{ marginTop: 10 }}>
-                    {item.description}
-                  </p> */}
 
                   <div className="app__work-tag app__flex">
                     <p className="p-text">{item.tags[0]}</p>
@@ -210,4 +207,8 @@ const Work = () => {
   );
 };
 
-export default AppWrap(Work, "work");
+export default AppWrap(
+  MotionWrap(Work, "app__works"),
+  "work",
+  "app__primarybg"
+);

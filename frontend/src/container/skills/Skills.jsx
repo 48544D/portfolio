@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { AppWrap } from "../../wrapper";
+import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import "./skills.scss";
 
@@ -36,7 +36,10 @@ const Skills = () => {
               className="app__skills-item app__flex"
               key={skill.name}
             >
-              <div className="app__flex">
+              <div
+                className="app__flex"
+                style={{ backgroundColor: skill.bgColor }}
+              >
                 <img src={urlFor(skill.icon)} alt={skill.name} />
               </div>
 
@@ -87,4 +90,8 @@ const Skills = () => {
   );
 };
 
-export default AppWrap(Skills, "skills");
+export default AppWrap(
+  MotionWrap(Skills, "app__skills"),
+  "skills",
+  "app__whitebg"
+);
