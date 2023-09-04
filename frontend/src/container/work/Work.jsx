@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
-
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import { AppWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import ReactPaginate from "react-paginate";
@@ -170,15 +170,27 @@ const Work = () => {
                 </div>
 
                 <div className="app__work-content app__flex">
-                  <h4 className="bold-text">{item.title}</h4>
-                  <p className="p-text" style={{ marginTop: 10 }}>
+                  <h4
+                    className="bold-text"
+                    data-tooltip-id={item.title}
+                    data-tooltip-content={item.description}
+                  >
+                    {item.title}
+                  </h4>
+                  {/* <p className="p-text" style={{ marginTop: 10 }}>
                     {item.description}
-                  </p>
+                  </p> */}
 
                   <div className="app__work-tag app__flex">
                     <p className="p-text">{item.tags[0]}</p>
                   </div>
                 </div>
+                <ReactTooltip
+                  id={item.title}
+                  effect="solid"
+                  arrowColor="#fff"
+                  className="work-tooltip"
+                />
               </motion.div>
             ))}
         </div>
