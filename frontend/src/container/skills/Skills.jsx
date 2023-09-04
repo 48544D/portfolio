@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-// import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 import { AppWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import "./skills.scss";
 
 const Skills = () => {
-  // const [experiences, setExperiences] = useState([]);
+  const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
+  const thisYear = new Date().getFullYear();
 
   useEffect(() => {
     // fetch from sanity
-    // const queryExperiences = '*[_type == "experiences"]';
+    const queryExperiences = '*[_type == "experiences"]';
     const querySkills = '*[_type == "skills"]';
 
-    // client.fetch(queryExperiences).then((experiences) => {
-    //   setExperiences(experiences);
-    // });
+    client.fetch(queryExperiences).then((experiences) => {
+      setExperiences(experiences);
+    });
     client.fetch(querySkills).then((skills) => {
       setSkills(skills);
     });
-  });
+  }, []);
 
   return (
     <>
@@ -34,14 +36,49 @@ const Skills = () => {
               className="app__skills-item app__flex"
               key={skill.name}
             >
-              <div
-                className="app__flex"
-                // style={{ backgroundColor: skill.bgColor }}
-              >
+              <div className="app__flex">
                 <img src={urlFor(skill.icon)} alt={skill.name} />
               </div>
 
               <p className="p-text">{skill.name}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div className="app__skills-exp">
+          {experiences.map((experience) => (
+            <motion.div className="app__skills-exp-item" key={experience.year}>
+              <div className="app__skills-exp-year">
+                <p className="bold-text">
+                  {experience.year}{" "}
+                  {experience.year == thisYear ? "(Present)" : ""}
+                </p>
+              </div>
+              <motion.div className="app__skills-exp-works">
+                {experience.works.map((work) => (
+                  <>
+                    <motion.div
+                      whileInView={{ opacity: [0, 1] }}
+                      transition={{ duration: 0.5 }}
+                      key={work.name}
+                    >
+                      <div
+                        data-tooltip-id={work.name}
+                        data-tooltip-content={work.desc}
+                        className="app__skills-exp-work"
+                      >
+                        <h4 className="bold-text">{work.name}</h4>
+                        <p className="p-text">{work.company}</p>
+                      </div>
+                    </motion.div>
+                    <ReactTooltip
+                      id={work.name}
+                      effect="solid"
+                      arrowColor="#fff"
+                      className="skills-tooltip"
+                    />
+                  </>
+                ))}
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
