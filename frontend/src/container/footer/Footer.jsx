@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { images } from "../../constants";
 import { client } from "../../client";
 import { AppWrap, MotionWrap } from "../../wrapper";
