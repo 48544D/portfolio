@@ -49,7 +49,6 @@
 }
 
 .app__header-badge {
-  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -57,7 +56,7 @@
 
   .badge-cmp,
   .tag-cmp {
-    padding: 1rem 2rem;
+    padding: 0.7rem 1.5rem;
     border: var(--white-color);
     border-radius: 15px;
     flex-direction: row;
@@ -68,7 +67,7 @@
 
   .tag-cmp {
     flex-direction: column;
-    margin-top: 3rem;
+    margin-top: 2rem;
 
     p {
       width: 100%;
@@ -78,7 +77,7 @@
   }
 
   span {
-    font-size: 2.5rem;
+    font-size: 2rem;
 
     @media screen and (min-width: 2000px) {
       font-size: 5rem;
@@ -92,13 +91,13 @@
 }
 
 .app__header-circles {
-  flex: 0.75;
+  flex: 0.4;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
   height: 100%;
-  margin-left: 1rem;
+  // margin-left: 1rem;
 
   div {
     width: 100px;
@@ -156,31 +155,10 @@
 }
 
 .app__header-img {
-  flex: 1;
+  flex: 1.5;
+  // border: 1px solid red;
   height: 100%;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  position: relative;
-
-  img {
-    width: 100%;
-    object-fit: contain;
-    z-index: 1;
-  }
-
-  .overlay-circle {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    width: 100%;
-    height: 90%;
-  }
-
   @media screen and (max-width: 1200px) {
-    margin: 2rem 0;
+    width: 100%;
   }
 }
