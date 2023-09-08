@@ -41,7 +41,7 @@ const Testimonial = () => {
             <img src={urlFor(currentTestimonial.imageUrl)} alt="testimonial" />
             <div className="app__testimonial-content">
               <motion.p
-                whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+                whileInView={{ x: [-30, 0], opacity: [0, 1] }}
                 transition={{ duration: 0.5, type: "tween" }}
                 className="p-text"
               >

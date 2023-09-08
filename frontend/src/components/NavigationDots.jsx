@@ -5,15 +5,13 @@ const NavigationDots = ({ active }) => {
     <div className="app__navigation">
       {["home", "about", "work", "skills", "testimonials", "contact"].map(
         (item, index) => (
-          <>
-            <a
-              key={item + index}
-              href={`#${item}`}
-              className="app__navigation-dot"
-              style={active === item ? { backgroundColor: "#313BAC" } : {}}
-              data-text={item}
-            />
-          </>
+          <a
+            key={item + index}
+            href={`#${item}`}
+            className="app__navigation-dot"
+            style={active === item ? { backgroundColor: "#313BAC" } : {}}
+            data-text={item}
+          />
         )
       )}
     </div>
