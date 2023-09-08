@@ -41,14 +41,6 @@ const ComputersCanvas = () => {
     }
   }, []);
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth < 1200) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  });
-
   return (
     <Canvas
       frameloop="demand"
