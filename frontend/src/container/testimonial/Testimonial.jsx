@@ -35,7 +35,7 @@ const Testimonial = () => {
     <>
       <h2 className="head-text">Testimonials</h2>
 
-      {testimonials.length && (
+      {testimonials.length > 0 && (
         <>
           <div className="app__testimonial-item app__flex">
             <img src={urlFor(currentTestimonial.imageUrl)} alt="testimonial" />
@@ -81,6 +81,20 @@ const Testimonial = () => {
             </div>
           </div>
         </>
+      )}
+
+      {testimonials.length === 0 && (
+        <div className="app__testimonial-item app__flex">
+          <div className="app__testimonial-content">
+            <motion.p
+              whileInView={{ x: [-30, 0], opacity: [0, 1] }}
+              transition={{ duration: 0.5, type: "tween" }}
+              className="p-text"
+            >
+              No testimonials yet.
+            </motion.p>
+          </div>
+        </div>
       )}
 
       <div className="app__testimonial-brands app__flex">
