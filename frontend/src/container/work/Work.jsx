@@ -178,7 +178,7 @@ const Work = () => {
                   <h4
                     className="bold-text"
                     data-tooltip-id={item.title}
-                    data-tooltip-content={item.description}
+                    data-tooltip-html={`<h4 style="color: black">${item.title}</h4><p>${item.description}</p>`}
                   >
                     {item.title}
                   </h4>
@@ -186,6 +186,7 @@ const Work = () => {
                   <div className="app__work-tag app__flex">
                     <p className="p-text">{item.tags[0]}</p>
                   </div>
+                  <p>hover over the title for more info</p>
                 </div>
                 <ReactTooltip
                   id={item.title}
