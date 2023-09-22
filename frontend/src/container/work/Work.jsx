@@ -15,12 +15,18 @@ const Work = () => {
   const [works, setWorks] = useState([]);
   const [tags, setTags] = useState([]);
   const [filterWorks, setFilterWorks] = useState([]);
+  // the number of items to be displayed per page
   const [itemsPerPage, setItemsPerPage] = useState(3);
+  // the start offset of the items to be displayed
   const [itemOffset, setItemOffset] = useState(0);
+  // the end offset of the items to be displayed
   const endOffset = itemOffset + itemsPerPage;
+  // the items to be displayed
   const currentItems = filterWorks.slice(itemOffset, endOffset);
+  // the number of pages in pagination
   const pageCount = Math.ceil(filterWorks.length / itemsPerPage);
 
+  // function to handle clicking of pagination
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % filterWorks.length;
 
@@ -28,10 +34,10 @@ const Work = () => {
     setTimeout(() => {
       setAnimateWorkItem({ opacity: 1 });
       setItemOffset(newOffset);
-      console.log(itemOffset);
     }, 300);
   };
 
+  // function to handle changing of the work filter
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
     setAnimateCard({ y: 100, opacity: 0 });
@@ -51,7 +57,7 @@ const Work = () => {
   };
 
   // function to manually trigger the a tag when li is clicked since react-paginate doesn't support li click
-  const liClick = () => {
+  useEffect(() => {
     // getting all li tags of the pagination
     const paginationLi = document.querySelectorAll(".pagination > li");
 
@@ -61,8 +67,7 @@ const Work = () => {
         li.querySelector("a").click();
       });
     });
-  };
-  liClick();
+  }, [works, filterWorks]);
 
   // responsive items per page
   const handleResize = () => {

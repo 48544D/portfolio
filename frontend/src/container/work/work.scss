@@ -156,7 +156,7 @@
       color: #000;
       font-weight: 800;
       cursor: pointer;
-      transition: all 0.3s ease-in;
+      transition: all 0.2s ease-in;
       margin: 0.5rem;
 
       &:hover {
@@ -168,6 +168,11 @@
         padding: 1rem 2rem;
         border-radius: 0.85rem;
       }
+    }
+
+    li.next,
+    li.previous {
+      display: none;
     }
   }
 }
