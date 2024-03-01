@@ -151,26 +151,34 @@ const Work = () => {
                     }}
                     className="app__work-hover app__flex"
                   >
-                    <a href={item.projectLink} target="_blank" rel="noreferrer">
-                      <motion.div
-                        whileInView={{ scale: [0, 1] }}
-                        whileHover={{ scale: [1, 0.9] }}
-                        transition={{ duration: 0.1 }}
-                        className="app__flex"
+                    {item.projectLink && (
+                      <a
+                        href={item.projectLink}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        <AiFillEye />
-                      </motion.div>
-                    </a>
-                    <a href={item.codeLink} target="_blank" rel="noreferrer">
-                      <motion.div
-                        whileInView={{ scale: [0, 1] }}
-                        whileHover={{ scale: [1, 0.9] }}
-                        transition={{ duration: 0.1 }}
-                        className="app__flex"
-                      >
-                        <AiFillGithub />
-                      </motion.div>
-                    </a>
+                        <motion.div
+                          whileInView={{ scale: [0, 1] }}
+                          whileHover={{ scale: [1, 0.9] }}
+                          transition={{ duration: 0.1 }}
+                          className="app__flex"
+                        >
+                          <AiFillEye />
+                        </motion.div>
+                      </a>
+                    )}
+                    {item.codeLink && (
+                      <a href={item.codeLink} target="_blank" rel="noreferrer">
+                        <motion.div
+                          whileInView={{ scale: [0, 1] }}
+                          whileHover={{ scale: [1, 0.9] }}
+                          transition={{ duration: 0.1 }}
+                          className="app__flex"
+                        >
+                          <AiFillGithub />
+                        </motion.div>
+                      </a>
+                    )}
                   </motion.div>
                 </div>
 
