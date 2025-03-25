@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.db9f7c39.css",
-    "main.js": "/portfolio/static/js/main.d9809f26.js",
-    "static/js/726.e1b13c5d.chunk.js": "/portfolio/static/js/726.e1b13c5d.chunk.js",
+    "main.css": "/portfolio/static/css/main.364f3027.css",
+    "main.js": "/portfolio/static/js/main.300eda40.js",
+    "static/js/726.208ec286.chunk.js": "/portfolio/static/js/726.208ec286.chunk.js",
     "static/media/about04.png": "/portfolio/static/media/about04.fa7b3a72ed32b0e25bfb.png",
     "static/media/about02.png": "/portfolio/static/media/about02.7a3df03410ee756268ec.png",
     "static/media/about01.png": "/portfolio/static/media/about01.080509de05322b7aafda.png",
@@ -13,6 +13,7 @@
     "static/media/spotify.png": "/portfolio/static/media/spotify.2b5e9be1eb1ab501e7cd.png",
     "static/media/nb.png": "/portfolio/static/media/nb.98f3253e32cc67a4cb5e.png",
     "static/media/asus.png": "/portfolio/static/media/asus.514bc34955008a92e09f.png",
+    "static/media/java.png": "/portfolio/static/media/java.fdabd4e11f1235e4e8e0.png",
     "static/media/adidas.png": "/portfolio/static/media/adidas.83df8153294f9137d308.png",
     "static/media/Laravel.png": "/portfolio/static/media/Laravel.12ffe688eaea7cac2eba.png",
     "static/media/bolt.png": "/portfolio/static/media/bolt.64e7d9d30ece478ef3a0.png",
@@ -29,13 +30,13 @@
     "static/media/git.png": "/portfolio/static/media/git.a54d3fa44e02f2f61e69.png",
     "static/media/skype.png": "/portfolio/static/media/skype.c8d7ee175da5b4c8a8ab.png",
     "index.html": "/portfolio/index.html",
-    "static/media/circle.svg": "/portfolio/static/media/circle.134eeeb1e58895b892195fe8ed63bc9f.svg",
-    "main.db9f7c39.css.map": "/portfolio/static/css/main.db9f7c39.css.map",
-    "main.d9809f26.js.map": "/portfolio/static/js/main.d9809f26.js.map",
-    "726.e1b13c5d.chunk.js.map": "/portfolio/static/js/726.e1b13c5d.chunk.js.map"
+    "static/media/circle.svg": "/portfolio/static/media/circle.ae5f84b3853b9e34aa83cf8dada715c5.svg",
+    "main.364f3027.css.map": "/portfolio/static/css/main.364f3027.css.map",
+    "main.300eda40.js.map": "/portfolio/static/js/main.300eda40.js.map",
+    "726.208ec286.chunk.js.map": "/portfolio/static/js/726.208ec286.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.db9f7c39.css",
-    "static/js/main.d9809f26.js"
+    "static/css/main.364f3027.css",
+    "static/js/main.300eda40.js"
   ]
 }
