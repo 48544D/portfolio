@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./header.scss";
 import { AppWrap } from "../../wrapper";
 import { motion } from "framer-motion";
 import { images } from "../../constants";
-import { ComputerCanvas } from "../../components/canvas";
 
 const Header = () => {
   const scaleVariants = {
@@ -17,53 +16,45 @@ const Header = () => {
     },
   };
 
-  const [showComputer, setShowComputer] = useState(false);
-
-  // show computer canvas after 1s
-  useEffect(() => {
-    setTimeout(() => {
-      setShowComputer(true);
-    }, 1100);
-
-    return () => {
-      setShowComputer(false);
-    };
-  }, []);
-
   return (
-    <div className="app__header app__flex">
+    <div className="w-full h-screen flex flex-col lg:flex-row lg:mt-0 mt-28 items-center px-8">
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
-        className="app__header-info"
       >
-        <div className="app__header-badge">
-          <div className="badge-cmp app__flex">
-            <span>👋</span>
-            <div style={{ marginLeft: 20 }}>
-              <p className="p-text">Hello there, I am</p>
-              <h1 className="head-text">Haytham</h1>
-            </div>
+        <div className="lg:w-4/5">
+          <div className="flex items-center gap-1 md:gap-4">
+            <span className="flex text-2xl md:text-4xl justify-center items-center">
+              👋
+            </span>
+            <h1 className="text-3xl md:text-6xl head-text flex justify-center lg:justify-start w-full text-left">
+              Hello There, <br className="block lg:hidden" /> I am Haytham
+            </h1>
           </div>
 
-          <div className="tag-cmp app__flex">
-            <p className="p-text">Web Developer</p>
-            <p className="p-text">Software Engineer</p>
-            <p className="p-text">Computer Science Student</p>
-          </div>
+          <p className="text-3xl lg:ml-16 text-gray-400">Software Engineer</p>
+          <p className="lg:ml-16">
+            Full-Stack Engineer skilled in React, Node.js, and modern frameworks
+            like Tailwind CSS. Delivered scalable solutions such as a
+            Docker-powered MERN stack back-office system, driving architectural
+            decisions and end-to-end development. Versatile in Angular, Spring
+            Boot, and Laravel.
+          </p>
         </div>
       </motion.div>
-
-      <div className="app__header-img">
-        {showComputer && <ComputerCanvas />}
-      </div>
 
       <motion.div
         variant={scaleVariants}
         whileInView={scaleVariants.whileInView}
-        className="app__header-circles"
+        className="app__header-circles w-fit flex"
       >
-        {[images.react, images.laravel, images.cpp].map((circle, index) => (
+        {[
+          images.react,
+          images.laravel,
+          images.cpp,
+          images.css,
+          images.node,
+        ].map((circle, index) => (
           <div className="circle-cmp app__flex" key={`circle-${index}`}>
             <img src={circle} alt="circle" />
           </div>
