@@ -35,6 +35,7 @@ import nb from "../assets/nb.png";
 import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
 import laravel from "../assets/Laravel.png";
+import java from "../assets/java.png";
 
 export default {
   email,
@@ -48,6 +49,7 @@ export default {
   graphql,
   html,
   javascript,
+  java,
   mu5,
   node,
   python,

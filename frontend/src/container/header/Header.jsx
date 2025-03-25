@@ -52,10 +52,13 @@ const Header = () => {
           images.react,
           images.laravel,
           images.cpp,
-          images.css,
+          images.java,
           images.node,
         ].map((circle, index) => (
-          <div className="circle-cmp app__flex" key={`circle-${index}`}>
+          <div
+            className="circle-cmp rounded-md app__flex"
+            key={`circle-${index}`}
+          >
             <img src={circle} alt="circle" />
           </div>
         ))}
