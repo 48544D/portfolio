@@ -5,6 +5,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import "./skills.scss";
+import { images } from "../../constants";
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
@@ -52,8 +53,8 @@ const Skills = () => {
           ))}
         </motion.div>
         <motion.div className="app__skills-exp">
-          {experiences.map((experience) => (
-            <motion.div className="app__skills-exp-item" key={experience.year}>
+          {experiences.map((experience, index) => (
+            <motion.div className="app__skills-exp-item" key={index}>
               <div className="app__skills-exp-year">
                 <p className="bold-text">
                   {experience.year}{" "}
@@ -73,7 +74,14 @@ const Skills = () => {
                         data-tooltip-content={work.desc}
                         className="app__skills-exp-work"
                       >
-                        <h4 className="bold-text">{work.name}</h4>
+                        <div className="flex gap-2">
+                          <h4 className="bold-text">{work.name}</h4>
+                          <img
+                            src={images.infoIcon}
+                            alt="info-icon"
+                            className="w-4"
+                          />
+                        </div>
                         <p className="p-text">{work.company}</p>
                       </div>
                     </motion.div>

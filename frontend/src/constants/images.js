@@ -1,3 +1,4 @@
+import infoIcon from "../assets/info-icon-svgrepo-com.svg";
 import email from "../assets/email.png";
 import mobile from "../assets/mobile.png";
 import api from "../assets/api.png";
@@ -73,4 +74,5 @@ export default {
   skype,
   spotify,
   laravel,
+  infoIcon,
 };
